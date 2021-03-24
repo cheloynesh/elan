@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/prueba', PruebaController::class)->name('prueba');;
+Route::middleware(['auth:sanctum', 'verified'])->get('/prueba', PruebaController::class)->name('prueba');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
